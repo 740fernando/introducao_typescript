@@ -1,15 +1,22 @@
-// Utilizando o caracter ? para variaveis opcionais
-
-interface IUsuario {
-    id: string;
-    email: string;
-    cargo?: 'gerente' | 'corrdenador' | 'supervisor' | 'funcionario';
+interface Cachorro{
+    idade: number;
+    nome: string;
+    parqueFavorito?: string;
 }
 
-function redirecione(usuario : IUsuario){
-    if(usuario.cargo){
-        //redirecionar(usuario.cargo)
-    }
-
-    // redirecionar p/ área do usuário
+type CachorroSomenteLeitura = {
+    +readonly [K in keyof Cachorro]-?: Cachorro[K];
 }
+
+class MeuCachorro implements Cachorro  {
+     nome;
+     idade;
+
+
+constructor(nome, idade){
+    this.idade = nome;
+    this.idade = idade;
+ }
+}
+
+const cao = new MeuCachorro('Frida', 4);
